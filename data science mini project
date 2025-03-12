@@ -1,0 +1,57 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
+import { motion } from "framer-motion";
+
+const data = [
+  { name: "Raw Data", value: 10 },
+  { name: "Data Cleaning", value: 30 },
+  { name: "Exploration", value: 50 },
+  { name: "Feature Engineering", value: 70 },
+  { name: "Modeling", value: 90 },
+  { name: "Evaluation", value: 100 },
+];
+
+export default function DataScienceExploration() {
+  return (
+    <div className="flex flex-col items-center p-6 space-y-6">
+      <motion.h1
+        className="text-3xl font-bold"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Exploring Data Science
+      </motion.h1>
+      
+      <Card className="w-full max-w-2xl p-4 shadow-lg">
+        <CardContent>
+          <p className="text-lg">
+            Data science is the field of study that combines domain expertise, programming, and statistics to extract meaningful insights from data.
+          </p>
+          <ul className="list-disc pl-5 mt-2">
+            <li>Understanding the nature of data</li>
+            <li>Data preprocessing and cleaning</li>
+            <li>Exploratory data analysis</li>
+            <li>Feature engineering and model selection</li>
+            <li>Model evaluation and optimization</li>
+          </ul>
+        </CardContent>
+      </Card>
+
+      <div className="w-full max-w-xl">
+        <h2 className="text-xl font-semibold mb-4">Data Science Workflow</h2>
+        <LineChart width={500} height={300} data={data}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Line type="monotone" dataKey="value" stroke="#8884d8" strokeWidth={2} />
+        </LineChart>
+      </div>
+      
+      <Button className="mt-4" onClick={() => alert("Explore More Coming Soon!")}>Learn More</Button>
+    </div>
+  );
+}
